@@ -1,6 +1,5 @@
-/**
- * Created by Teacher on 1/7/2019.
- */
+package Activity2;
+
 public class Card
 {
     private String suit;
@@ -46,3 +45,4 @@ public class Card
                 '}';
     }
 }
+
