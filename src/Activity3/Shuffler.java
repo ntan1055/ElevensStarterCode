@@ -9,7 +9,7 @@ public class Shuffler {
      * The number of consecutive shuffle steps to be performed in each call
      * to each sorting procedure.
      */
-    private static final int SHUFFLE_COUNT = 1;
+    private static final int SHUFFLE_COUNT = rand(int);
 
 
     /**
@@ -19,7 +19,7 @@ public class Shuffler {
     public static void main(String[] args) {
         System.out.println("Results of " + SHUFFLE_COUNT +
                 " consecutive perfect shuffles:");
-        int[] values1 = {0, 1, 2, 3};
+        int[] values1 = {0, 1, 2, 3, 18, 21, 23, 35, 36, 38, 41, 44, 55, 59, 62};
         for (int j = 1; j <= SHUFFLE_COUNT; j++) {
             perfectShuffle(values1);
             System.out.print("  " + j + ":");
@@ -53,6 +53,25 @@ public class Shuffler {
      */
     public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+        nt[] shuffled = new int[VALUE_COUNT];
+        int indexCount = 0;
+
+        for (int i=0; i<VALUE_COUNT/2; i++) {
+            shuffled[indexCount] = values[i];
+            indexCount += 2;
+        }
+
+        indexCount = 1;
+
+        for (int i=VALUE_COUNT/2; i<shuffled.length; i++) {
+            if (indexCount == shuffled.length) break;
+            shuffled[indexCount] = values[s];
+            indexCount += 2;
+        }
+
+        for (int i=0; i<VALUE_COUNT; i++) {
+            values[i] = shuffled[i];
+        }
     }
 
     /**
@@ -68,6 +87,16 @@ public class Shuffler {
      */
     public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+        int indexCount = VALUE_COUNT - 1;
+        int randomInt;
+        int temp;
+
+        for (indexCount=indexCount; indexCount>1; indexCount--) {
+            randomInt = (int) (Math.random() * VALUE_COUNT);
+            temp = values[indexCount];
+            values[indexCount] = values[randomInt];
+            values[randomInt] = temp;
+        }
     }
 }
-
+}
